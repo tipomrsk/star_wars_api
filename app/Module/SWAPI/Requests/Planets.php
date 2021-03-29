@@ -45,10 +45,13 @@ class Planets
 
             curl_close($getPlanets);
 
+            /** if 'next' element is empty alter the $keetGetting value for stop the while and return */
             if(!$planets['next']) $keepGetting = false;
 
+            /** Update the $page value to alter the page */
             $page++;
 
+            /** @var  $eachPlanet Get only the planets result to add on return array*/
             foreach($planets['results'] as $eachPlanet) array_push($planetsReturn, $eachPlanet);
 
         }

@@ -8,7 +8,13 @@ use App\Module\SWAPI\Requests\Planets;
 
 class Module
 {
-    public static function migratingSWAPIPlanetsData()
+
+    /**
+     * Call the method to get all planets data from SWAPI and send to create method on model
+     *
+     * @return array
+     */
+    public static function migratingSWAPIPlanetsData(): array
     {
         $getPlanets = Planets::getPlanetsDataCURL();
 

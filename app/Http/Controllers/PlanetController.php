@@ -11,7 +11,12 @@ use Illuminate\Support\Facades\Validator;
 class PlanetController extends Controller
 {
 
-    public function swapiPlanet()
+    /**
+     * This method get planets data from SWAPI and insert on this API database
+     *
+     * @return JsonResponse
+     */
+    public function swapiPlanet(): JsonResponse
     {
         $response = Module::migratingSWAPIPlanetsData();
 
@@ -20,7 +25,6 @@ class PlanetController extends Controller
     }
 
     /**
-     * Listagem de planetas
      *
      * @param int|null $planetID opcional, se for passado retorna apenas os dados daquele planeta
      * @return JsonResponse
@@ -35,7 +39,6 @@ class PlanetController extends Controller
     }
 
     /**
-     * Cria novo planeta
      *
      * @param Request $request
      * @return JsonResponse
@@ -63,7 +66,6 @@ class PlanetController extends Controller
     }
 
     /**
-     * Atualização dos planetas
      *
      * @param Request $request
      * @return JsonResponse

@@ -33,7 +33,7 @@ class Planets extends Model
     }
 
     /**
-     * Cria um novo planeta
+     * Create a new planet
      *
      * @param array $request
      * @return array
@@ -61,7 +61,7 @@ class Planets extends Model
     }
 
     /**
-     * Atualização dos dados do planeta
+     * Update planet's data
      *
      * @param array $request
      * @return array
