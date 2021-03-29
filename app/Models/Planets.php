@@ -80,8 +80,8 @@ class Planets extends Model
         foreach($request as $field => $value) {
             if (!$value) continue;
 
-            $updating = Planets::where('planet_id', $request['id'])
-                        ->update(["planet_{$field}" => $value]);
+            $updating = Planets::where('id', $request['id'])
+                        ->update(["{$field}" => $value]);
 
             if($updating) $update = true;
         }
