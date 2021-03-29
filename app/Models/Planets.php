@@ -10,21 +10,18 @@ class Planets extends Model
     use HasFactory;
 
     protected $table = 'planet';
-    protected $primaryKey = 'planet_id';
-    public $timestamps = false;
-
+    protected $primaryKey = 'id';
 
     protected $fillable = [
-            'planet_name',
-            'planet_rotation_period',
-            'plaent_orbital_period',
-            'planet_diameter',
-            'planet_climate',
-            'planet_gravity',
-            'planet_terrain',
-            'planet_surface_water',
-            'planet_population',
-            'planet_created_date',
+            'name',
+            'rotation_period',
+            'orbital_period',
+            'diameter',
+            'climate',
+            'gravity',
+            'terrain',
+            'surface_water',
+            'population',
         ];
 
 
@@ -49,16 +46,15 @@ class Planets extends Model
         $response->error = ['status' => 400, 'message' => 'Erro ao Inserir Planeta'];
 
         $insert = Planets::create([
-            'planet_name' => $request['name'],
-            'planet_rotation_period' => $request['rotation_period'],
-            'plaent_orbital_period' => $request['orbital_period'],
-            'planet_diameter' => $request['diameter'],
-            'planet_climate' => $request['climate'],
-            'planet_gravity' => $request['gravity'],
-            'planet_terrain' => $request['terrain'],
-            'planet_surface_water' => $request['surface_water'],
-            'planet_population' => $request['population'],
-            'planet_created_date' => date('Y-m-d H:i:s'),
+            'name' => $request['name'],
+            'rotation_period' => $request['rotation_period'],
+            'orbital_period' => $request['orbital_period'],
+            'diameter' => $request['diameter'],
+            'climate' => $request['climate'],
+            'gravity' => $request['gravity'],
+            'terrain' => $request['terrain'],
+            'surface_water' => $request['surface_water'],
+            'population' => $request['population'],
         ]);
 
         return $insert ? $response->success : $response->error;

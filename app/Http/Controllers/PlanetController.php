@@ -3,12 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Planets;
+use App\Module\SWAPI\Module;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Validator;
 
 class PlanetController extends Controller
 {
+
+    public function swapiPlanet()
+    {
+        $response = Module::migratingSWAPIPlanetsData();
+
+        return response()->json($response['message'], $response['status']);
+
+    }
+
     /**
      * Listagem de planetas
      *
