@@ -4,6 +4,7 @@
 namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use phpDocumentor\Reflection\Types\Mixed_;
 
 class Planets extends Model
 {
@@ -25,9 +26,11 @@ class Planets extends Model
         ];
 
 
-    public static function getAPlanet(int $planetID)
+    public static function getAPlanet($planet)
     {
-        $data = Planets::where('planet_id', $planetID)->get();
+        if(is_numeric($planet)) $data = Planets::where('id', $planet)->get();
+        else $data = PLanets::where('name', 'like', "%{$planet}%")->get();
+
 
         return count($data->toArray()) > 0 ? $data : 'Nenhum planeta com essa identificação foi encontrado';
     }

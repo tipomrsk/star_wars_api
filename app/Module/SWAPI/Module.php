@@ -100,6 +100,7 @@ class Module
             }
 
             if($data['status'] == 400) return $response->error;
+
             $dataReturn = [];
 
         }

@@ -7,33 +7,21 @@ use App\Module\SWAPI\Module;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Validator;
+use phpDocumentor\Reflection\Types\Mixed_;
 
 class PlanetController extends Controller
 {
 
     /**
-     * This method get planets data from SWAPI and insert on this API database
      *
+     * @param int|null $planet id or name of planet
      * @return JsonResponse
      */
-    public function swapiPlanet(): JsonResponse
+    public function getPlanet($planet = null): JsonResponse
     {
-        $response = Module::migratingSWAPIPlanetsData();
+        if(!$planet) return response()->json(Planets::all(), 200) ;
 
-        return response()->json($response['message'], $response['status']);
-
-    }
-
-    /**
-     *
-     * @param int|null $planetID opcional, se for passado retorna apenas os dados daquele planeta
-     * @return JsonResponse
-     */
-    public function getPlanet(int $planetID = null): JsonResponse
-    {
-        if(!$planetID) return response()->json(Planets::all(), 200) ;
-
-        $response = Planets::getAPlanet($planetID);
+        $response = Planets::getAPlanet($planet);
 
         return response()->json($response, 200);
     }
