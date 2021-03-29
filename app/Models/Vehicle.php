@@ -9,7 +9,7 @@ class Vehicle extends Model
 {
     use HasFactory;
 
-    protected $table = 'people';
+    protected $table = 'vehicle';
     protected $primaryKey = 'id';
 
     protected $fillable = [
@@ -31,7 +31,7 @@ class Vehicle extends Model
      * @param array $request
      * @return array
      */
-    public function newStarship(array $request): array
+    public function newVehicle(array $request): array
     {
         $response = new \stdClass();
         $response->success = ['status' => 200, 'message' => 'Vehicle created with success'];

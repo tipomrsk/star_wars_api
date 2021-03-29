@@ -9,7 +9,7 @@ class Species extends Model
 {
     use HasFactory;
 
-    protected $table = 'people';
+    protected $table = 'species';
     protected $primaryKey = 'id';
 
     protected $fillable = [
@@ -25,12 +25,12 @@ class Species extends Model
         ];
 
     /**
-     * Create a new People
+     * Create a new Specie
      *
      * @param array $request
      * @return array
      */
-    public function newPeople(array $request): array
+    public function newSpecie(array $request): array
     {
         $response = new \stdClass();
         $response->success = ['status' => 200, 'message' => 'Specie created with success'];

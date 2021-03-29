@@ -9,7 +9,7 @@ class Starship extends Model
 {
     use HasFactory;
 
-    protected $table = 'people';
+    protected $table = 'starship';
     protected $primaryKey = 'id';
 
     protected $fillable = [
@@ -17,6 +17,7 @@ class Starship extends Model
             'model',
             'manufacturer',
             'cost_in_credits',
+            'length',
             'max_atmosphering_speed',
             'crew',
             'passengers',
@@ -46,6 +47,7 @@ class Starship extends Model
             'cost_in_credits' => $request['cost_in_credits'],
             'length' => $request['length'],
             'max_atmosphering_speed' => $request['max_atmosphering_speed'],
+            'crew' => $request['crew'],
             'passengers' => $request['passengers'],
             'cargo_capacity' => $request['cargo_capacity'],
             'consumables' => $request['consumables'],

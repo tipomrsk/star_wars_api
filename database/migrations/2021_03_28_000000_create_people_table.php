@@ -14,14 +14,14 @@ class CreatePeopleTable extends Migration
     {
         Schema::create('people', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('height');
-            $table->text('mass');
-            $table->text('hair_color');
-            $table->text('skin_color');
-            $table->text('eye_color');
-            $table->text('birth_year');
-            $table->text('gender');
+            $table->string('name')->nullable();
+            $table->text('height')->nullable();
+            $table->text('mass')->nullable();
+            $table->text('hair_color')->nullable();
+            $table->text('skin_color')->nullable();
+            $table->text('eye_color')->nullable();
+            $table->text('birth_year')->nullable();
+            $table->text('gender')->nullable();
             $table->timestamps();
         });
     }

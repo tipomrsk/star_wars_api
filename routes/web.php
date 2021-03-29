@@ -17,10 +17,8 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->group(['prefix' => 'swapi-data'], function () use ($router) {
-    $router->get('planets', 'PlanetController@swapiPlanet');
-});
 $router->get('/planet[/{planetID}]', 'PlanetController@getPlanet');
 $router->post('/newPlanet', 'PlanetController@newPlanet');
 $router->put('/updatePlanet', 'PlanetController@updatePlanet');
+$router->get('/get-swapi-data', 'SWAPIController@getAllData');
 
