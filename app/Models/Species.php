@@ -36,7 +36,7 @@ class Species extends Model
         $response->success = ['status' => 200, 'message' => 'Specie created with success'];
         $response->error = ['status' => 400, 'message' => 'Error to create a new Specie'];
 
-        $insert = People::create([
+        $insert = Species::create([
             'name' => $request['name'],
             'classification' => $request['classification'],
             'designation' => $request['designation'],

@@ -37,7 +37,7 @@ class Vehicle extends Model
         $response->success = ['status' => 200, 'message' => 'Vehicle created with success'];
         $response->error = ['status' => 400, 'message' => 'Error to create a new Vehicle'];
 
-        $insert = Starship::create([
+        $insert = Vehicle::create([
             'name' => $request['name'],
             'model' => $request['model'],
             'manufacturer' => $request['manufacturer'],
