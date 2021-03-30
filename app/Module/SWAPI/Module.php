@@ -3,6 +3,11 @@
 
 namespace App\Module\SWAPI;
 
+use App\Models\Planets;
+use App\Models\Starship;
+use App\Models\Vehicle;
+use App\Models\People;
+use App\Models\Species;
 
 class Module
 {
@@ -33,11 +38,13 @@ class Module
          * Run all $entities array to get request all resources from swapi.net
          */
         foreach($entities as $entity) {
+
             /**
              * Reset this values to run again the while
              */
             $keepGetting = true;
             $page = 1;
+
             /**
              * Keep getting data until 'next' element return false
              */
@@ -74,32 +81,18 @@ class Module
             /**
              * Each entity call their classes
              */
-            if($entity == 'planets'){
-                foreach($dataReturn as $planet)
-                    $data = (new \App\Models\Planets())->newPlanet($planet);
+
+            foreach($dataReturn as $data){
+                $return = match ($entity){
+                    'planets' => (new Planets())->newPlanet($data),
+                    'starships' => (new Starship())->newStarship($data),
+                    'vehicles' => (new Vehicle())->newVehicle($data),
+                    'people' => (new People())->newPeople($data),
+                    'species' => (new Species())->newSpecie($data)
+                };
             }
 
-            if($entity == 'starships'){
-                foreach($dataReturn as $starship)
-                    $data = (new \App\Models\Starship())->newStarship($starship);
-            }
-
-            if($entity == 'vehicles'){
-                foreach($dataReturn as $vehicle)
-                    $data = (new \App\Models\Vehicle())->newVehicle($vehicle);
-            }
-
-            if($entity == 'people'){
-                foreach($dataReturn as $person)
-                    $data = (new \App\Models\People())->newPeople($person);
-            }
-
-            if($entity == 'species'){
-                foreach($dataReturn as $specie)
-                    $data = (new \App\Models\Species())->newSpecie($specie);
-            }
-
-            if($data['status'] == 400) return $response->error;
+            if($return['status'] == 400) return $response->error;
 
             $dataReturn = [];
 
