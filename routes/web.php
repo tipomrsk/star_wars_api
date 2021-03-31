@@ -23,5 +23,11 @@ $router->group(['prefix' => 'planet'], function () use ($router) {
     $router->put('/update', 'PlanetController@updatePlanet');
 });
 
+$router->group(['prefix' => 'starship'], function () use ($router) {
+    $router->get('/select[/{starship}]', 'StarshipController@getStarship');
+    $router->post('/create', 'StarshipController@newStarship');
+    $router->put('/update', 'StarshipController@updateStarship');
+});
+
 $router->get('/get-swapi-data', 'SWAPIController@getAllData');
 

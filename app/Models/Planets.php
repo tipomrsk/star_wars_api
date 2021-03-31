@@ -26,13 +26,18 @@ class Planets extends Model
         ];
 
 
+    /**
+     * List planets for ID or for name searching with like
+     *
+     * @param $planet
+     * @return string
+     */
     public static function getAPlanet($planet)
     {
         if(is_numeric($planet)) $data = Planets::where('id', $planet)->get();
         else $data = PLanets::where('name', 'like', "%{$planet}%")->get();
 
-
-        return count($data->toArray()) > 0 ? $data : 'Nenhum planeta com essa identificação foi encontrado';
+        return count($data->toArray()) > 0 ? $data : "No one planet founded with: {$planet}";
     }
 
     /**
@@ -45,8 +50,8 @@ class Planets extends Model
     {
 
         $response = new \stdClass();
-        $response->success = ['status' => 200, 'message' => 'Planeta Inserido com Sucesso'];
-        $response->error = ['status' => 400, 'message' => 'Erro ao Inserir Planeta'];
+        $response->success = ['status' => 200, 'message' => 'Planet created with success'];
+        $response->error = ['status' => 400, 'message' => 'Error to create a new planet'];
 
         $insert = Planets::create([
             'name' => $request['name'],

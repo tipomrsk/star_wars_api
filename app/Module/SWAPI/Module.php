@@ -17,7 +17,7 @@ class Module
      *
      * @return mixed
      */
-    public static function getAllDataFromSWAPI()
+    public static function getAllDataFromSWAPI(): mixed
     {
         $response = new \stdClass();
         $response->success = ['status' => 200, 'message' => 'All entities was created successfully'];

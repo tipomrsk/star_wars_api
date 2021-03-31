@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Planets;
-use App\Module\SWAPI\Module;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Validator;
-use phpDocumentor\Reflection\Types\Mixed_;
 
 class PlanetController extends Controller
 {
@@ -21,9 +19,7 @@ class PlanetController extends Controller
     {
         if(!$planet) return response()->json(Planets::all(), 200) ;
 
-        $response = Planets::getAPlanet($planet);
-
-        return response()->json($response, 200);
+        return response()->json(Planets::getAPlanet($planet), 200);
     }
 
     /**

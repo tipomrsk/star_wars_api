@@ -28,6 +28,22 @@ class Starship extends Model
             'starship_class',
         ];
 
+
+    /**
+     * List starships for ID or for name searching with like
+     *
+     * @param $starship
+     * @return string
+     */
+    public static function getStarship($starship)
+    {
+        if(is_numeric($starship)) $data = Starship::where('id', $starship)->get();
+        else $data = Starship::where('name', 'like',"%{$starship}%")->get();
+
+        return (count($data->toArray()) > 0) ? $data : "No one planet founded with: {$starship}";
+    }
+
+
     /**
      * Create a new Starship
      *
