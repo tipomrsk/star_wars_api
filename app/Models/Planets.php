@@ -77,8 +77,8 @@ class Planets extends Model
     public function updatePlanet(array $request): array
     {
         $response = new \stdClass();
-        $response->success = ['status' => 200, 'message' => 'Planeta Atualizado com Sucesso'];
-        $response->error = ['status' => 400, 'message' => 'Erro ao Atualizar Planeta'];
+        $response->success = ['status' => 200, 'message' => 'Planet updated successfully'];
+        $response->error = ['status' => 400, 'message' => 'Fail to update planet'];
 
         $update = false;
 
@@ -90,6 +90,7 @@ class Planets extends Model
 
             if($updating) $update = true;
         }
+
         return $update ? $response->success : $response->error;
     }
 }

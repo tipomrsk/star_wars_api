@@ -75,4 +75,30 @@ class Starship extends Model
         return $insert ? $response->success : $response->error;
     }
 
+    /**
+     * Update starship's data
+     *
+     * @param array $request
+     * @return array
+     */
+    public function updateStarship(array $request): array
+    {
+        $response = new \stdClass();
+        $response->success = ['status' => 200, 'message' => 'Starship updated successfully'];
+        $response->error = ['status' => 400, 'message' => 'Fail to update Starship'];
+
+        $update = false;
+
+        foreach($request as $field => $value) {
+            if (!$value) continue;
+
+            $updating = Starship::where('id', $request['id'])
+                ->update(["{$field}" => $value]);
+
+            if($updating) $update = true;
+        }
+
+        return $update ? $response->success : $response->error;
+    }
+
 }
